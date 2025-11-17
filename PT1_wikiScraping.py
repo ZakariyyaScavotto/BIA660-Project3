@@ -127,3 +127,98 @@ def ParseVCard(HTML):
                 VCardDictionary[Key] = Value
 
     return VCardDictionary
+
+
+# Testing
+getFromWikipedia("Microsoft", "MSFT")
+getFromWikipedia("The Cheesecake Factory", "CAKE")
+
+
+
+# Initialize Wikipedia API
+wikipedia.set_user_agent('Web Mining Proj (mshi12@stevens.edu)')
+
+DF = pd.DataFrame(Collection.find({"wiki_resolver": {"$exists": False}}))
+
+for Row in DF.itertuples():
+    Company = Row.company_name
+    Ticker = Row.ticker_dot
+
+    print("Processing...")
+
+    try:
+        URL, VCard, Content = getFromWikipedia(Company, Ticker)
+
+        if URL:
+            doc = {
+                'ticker': Ticker,
+                'company_name': Company,
+                'wiki_url': URL,
+                'wiki_content': Content,
+                'wiki_vcard': VCard,
+                'wiki_resolver': 'wikipedia'
+            }
+            Collection.update_one(
+                {'ticker': Ticker, 'etf_holding_date': Row.etf_holding_date},
+                {'$set': doc} )
+            print(f" No valid Wikipedia data for {Ticker}: {URL}")
+        else:
+            print(f" Fetched data for {Ticker}: {URL}")
+    except Exception as Error:
+        print(f" Unhandled exception for {Ticker}")
+
+    time.sleep(0.25)
+
+DoneDF = pd.DataFrame(Collection.find({"wiki_resolver": {"$exists": True}}))
+S = DoneDF.wiki_url.value_counts()
+S[S > 1]
+
+list(Collection.find(("ticker": 'S')))
+
+query = {
+    "$and": [
+        {
+            "$expr": {
+                "$eq": [
+                    False,
+                    {
+                        "$regexMatch": {
+                            "input": { "$replaceAll": { "input": "$wiki_content", "find": "'", "replacement": "" } },
+                            "regex": {
+                                "$let": {
+                                    "vars": {
+                                        "firstWord": {
+                                            "$arrayElemAt": [ { "$split": ["$name", " "] }, 0 ]
+                                        }
+                                    },
+                                    "in": {
+                                        "$substrCP": [ "$$firstWord", 0, 6 ]
+                                    }
+                                }
+                            },
+                            "options": "i"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "wiki_resolver": {"$exists": True}
+        }
+    ]
+}
+
+# Execute Query
+Mismatched = list(Collection.find(query))
+print(Mismatched)
+
+
+# Fix Mismatched Entries
+for Doc in Mismatched:
+    Update = {
+        "$unset": {
+            "wiki_resolver": ""
+        }
+    }
+    Result = Collection.update_one({'_id': doc['_id'], Update})
+
