@@ -23,13 +23,25 @@ Note: Be polite to Wikipedia's servers, add a reasonable time.sleep() in your lo
     
 """
 
+## ADDED MONGO CONNECTION - swathi ###
+from pymongo import MongoClient
+URI = "mongodb+srv://testuser_2:admin_234@biaproject2.zxuzaya.mongodb.net/"
+# Connect to MongoDB
+client = MongoClient(URI)  # or your connection string
+
+# Select your database
+db = client["Project3"]
+
+# Select your collection
+Collection = db["PortfolioIntelligence"]
+###################################
+
 # Import libraries
 import pandas as pd
 import wikipedia
 from bs4 import BeautifulSoup
 import time
 import re
-
 
 def getFromWikipedia(Company, Ticker, URL = ''):
 
@@ -139,10 +151,13 @@ getFromWikipedia("The Cheesecake Factory", "CAKE")
 wikipedia.set_user_agent('Web Mining Proj (mshi12@stevens.edu)')
 
 DF = pd.DataFrame(Collection.find({"wiki_resolver": {"$exists": False}}))
+print("Columns:", DF.columns)
 
 for Row in DF.itertuples():
     Company = Row.company_name
-    Ticker = Row.ticker_dot
+
+    # CHANGED
+    Ticker = Row.ticker # Row.ticker_dot
 
     print("Processing...")
 
@@ -173,7 +188,8 @@ DoneDF = pd.DataFrame(Collection.find({"wiki_resolver": {"$exists": True}}))
 S = DoneDF.wiki_url.value_counts()
 S[S > 1]
 
-list(Collection.find(("ticker": 'S')))
+## CHANGED
+list(Collection.find({"ticker": "S"})) #list(Collection.find(("ticker": 'S')))
 
 query = {
     "$and": [
@@ -220,5 +236,7 @@ for Doc in Mismatched:
             "wiki_resolver": ""
         }
     }
-    Result = Collection.update_one({'_id': doc['_id'], Update})
+
+    ## CHANGED
+    Result = Collection.update_one({'_id': Doc['_id']}, Update) #Result = Collection.update_one({'_id': doc['_id'], Update})
 
