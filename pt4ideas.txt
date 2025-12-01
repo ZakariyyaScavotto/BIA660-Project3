@@ -1,0 +1,19 @@
+made by zak
+
+4.2 (create search infrastructure)
+    Task 1:
+        Creating two db fields
+            prod_text_for_search (concat all SUMMARY fields into single text field)
+            production_embedding_vector (copy of winning embedding to a top field level)
+    Task 2:
+        Creating 3 different indexes in MongoDB Atlas
+
+4.3 (implement search functions)
+    search_sparse, search_dense, search_hybrid_manual code all given
+
+4.4 (evaluation framework)
+    evaluation_set given
+    calculate_metrics function given
+
+4.5 (expected results and analysis)
+    Literally just run on things, should all come together
