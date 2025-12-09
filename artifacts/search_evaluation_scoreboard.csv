@@ -1,0 +1,34 @@
+query,theme,sparse_p@10,sparse_rr@10,dense_p@10,dense_rr@10,hybrid_p@10,hybrid_rr@10
+artificial intelligence hardware acceleration,AI Hardware,0.1,0.5,0.1,0.3333333333333333,0.1,1.0
+hyperscale cloud infrastructure,Cloud Infrastructure,0.2,0.5,0.1,0.1111111111111111,0.2,0.5
+business intelligence automation platforms,Enterprise AI Software,0.3,1.0,0.3,0.3333333333333333,0.3,0.5
+thermal management data centers,Data Center Cooling,0.2,1.0,0.4,0.3333333333333333,0.3,1.0
+photovoltaic energy generation,Solar Energy,0.0,0.0,0.2,1.0,0.0,0.0
+fission reactor electricity utilities,Nuclear Power,0.1,0.1,0.2,1.0,0.2,0.25
+electrical grid stabilization technology,Energy Storage,0.0,0.0,0.0,0.0,0.0,0.0
+offshore renewable power generation,Wind Energy,0.2,0.2,0.3,0.5,0.3,0.5
+battery powered passenger vehicles,Electric Vehicles,0.5,1.0,0.5,0.5,0.5,0.5
+self driving sensor technology,Autonomous Driving,0.1,0.5,0.1,0.5,0.1,0.5
+electronic transaction processing,Digital Payments,0.3,1.0,0.4,0.5,0.4,1.0
+installment lending platforms,BNPL,0.2,0.5,0.2,0.25,0.2,0.25
+digital asset trading platforms,Crypto Trading,0.3,0.5,0.1,0.2,0.3,0.25
+enterprise threat prevention systems,Cybersecurity,0.4,1.0,0.4,1.0,0.4,1.0
+identity verification access management,Zero Trust,0.2,1.0,0.2,1.0,0.2,1.0
+remote patient care technology,Digital Health,0.0,0.0,0.1,0.5,0.2,0.125
+superposition based computing,Quantum Computing,0.1,1.0,0.0,0.0,0.1,0.14285714285714285
+parallel processing supercomputers,HPC,0.0,0.0,0.2,1.0,0.1,0.1
+industrial process automation,Robotics & Automation,0.0,0.0,0.4,1.0,0.3,0.25
+fulfillment center optimization,Warehouse Automation,0.0,0.0,0.1,0.25,0.2,0.125
+immersive digital environments,Metaverse & Gaming,0.1,0.3333333333333333,0.1,1.0,0.3,0.25
+competitive gaming platforms,Gaming & Esports,0.4,1.0,0.4,0.5,0.5,0.5
+hospitality accommodation services,Hotels,0.1,0.16666666666666666,0.5,0.5,0.3,1.0
+commercial passenger aviation,Airlines,0.2,1.0,0.5,1.0,0.3,1.0
+discount wholesale retail operations,Big Box Retail,0.3,0.3333333333333333,0.3,0.3333333333333333,0.3,0.3333333333333333
+quick service dining franchises,Fast Food,0.4,1.0,0.6,1.0,0.5,0.5
+residential construction supplies retail,Home Improvement,0.1,0.2,0.4,1.0,0.3,0.3333333333333333
+wireless network infrastructure,5G & Edge Computing,0.7,1.0,0.6,1.0,0.5,1.0
+chip fabrication equipment,Semiconductor Equipment,0.4,1.0,0.5,1.0,0.4,1.0
+data storage solutions,Memory & Storage,0.5,1.0,0.3,1.0,0.4,1.0
+machine learning infrastructure stack,AI Infrastructure Stack,0.0,0.0,0.0,0.0,0.0,0.0
+precision medicine technology,Precision Medicine,0.1,0.16666666666666666,0.0,0.0,0.0,0.0
+MEAN,OVERALL,0.203125,0.53125,0.265625,0.5826388888888888,0.25625,0.49717261904761906
