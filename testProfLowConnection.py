@@ -58,9 +58,7 @@ def fetch_portfolio_intelligence(uri, username, password, limit=5):
 
 
 if __name__ == "__main__":
-    URI = "biaproject2.zxuzaya.mongodb.net/"
-    USERNAME = "profLow"
-    PASSWORD = "didWeCook"
+    # Replace with your actual MongoDB Atlas connection details
 
     if test_mongodb_connection(URI, USERNAME, PASSWORD):
         fetch_portfolio_intelligence(URI, USERNAME, PASSWORD, limit=5)
